@@ -7,13 +7,13 @@ function run() {
 
 	docker run \
 		-d \
-		--name "$NAME" \
-		-h "$NAME" \
+		--name "$NAME.docker" \
+		-h "$NAME.docker" \
 		--net kwasnet \
 		dkwasny/"$IMAGE";
 }
 
-docker run -d --name dnsmasq -h dnsmasq --net kwasnet --ip 172.18.1.1 dkwasny/dnsmasq
+docker run -d --name dnsmasq.docker -h dnsmasq.docker --net kwasnet --ip 172.18.1.1 dkwasny/dnsmasq
 run hdfs-namenode hdfs-namenode;
 run hdfs-secondary-namenode hdfs-secondary-namenode;
 run hdfs-datanode hdfs-datanode-1;
