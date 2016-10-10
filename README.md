@@ -1,2 +1,2 @@
 # DockerConfig
-A combination of Docker and Ansible to setup a local Hadoop cluster.
+A recreation of [AnsibleConfig](https://github.com/dkwasny/AnsibleConfig) using Docker.
