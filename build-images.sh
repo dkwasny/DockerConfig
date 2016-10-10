@@ -15,6 +15,7 @@ function build-dockerfile() {
 build-dockerfile "base"
 build-dockerfile "hdfs-base"
 build-dockerfile "hbase-base"
+build-dockerfile "yarn-base"
 
 # Build all images.
 for i in $(ls docker); do
