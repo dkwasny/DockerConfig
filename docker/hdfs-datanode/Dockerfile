@@ -3,8 +3,7 @@ MAINTAINER David Kwasny <dkwasny67@gmail.com>
 
 RUN yum -y install hadoop-hdfs-datanode
 
-COPY files/hdfs-site.xml /etc/hadoop/conf/
-COPY files/hadoop-hdfs-datanode /etc/default/
+ENV HADOOP_HEAPSIZE=256
 
 USER hdfs
 

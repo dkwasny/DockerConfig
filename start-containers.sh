@@ -18,3 +18,4 @@ run hdfs-namenode hdfs-namenode;
 run hdfs-secondary-namenode hdfs-secondary-namenode;
 run hdfs-datanode hdfs-datanode-1;
 run hdfs-datanode hdfs-datanode-2;
+run zookeeper zookeeper;
