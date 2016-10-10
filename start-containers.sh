@@ -15,7 +15,8 @@ function run() {
 		dkwasny/"$IMAGE";
 }
 
-run hdfs-namenode hdfs-namenode 172.18.1.1
-run hdfs-secondary-namenode hdfs-secondary-namenode 172.18.1.2
-run hdfs-datanode hdfs-datanode-1 172.18.2.1
-run hdfs-datanode hdfs-datanode-2 172.18.2.2
+run dnsmasq dnsmasq 172.18.1.1
+run hdfs-namenode hdfs-namenode 172.18.2.1
+run hdfs-secondary-namenode hdfs-secondary-namenode 172.18.2.2
+run hdfs-datanode hdfs-datanode-1 172.18.3.1
+run hdfs-datanode hdfs-datanode-2 172.18.3.2
