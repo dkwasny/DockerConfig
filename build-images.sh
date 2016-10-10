@@ -11,9 +11,10 @@ function build-dockerfile() {
 		"$IMAGE_DIR";
 }
 
-# We need to ensure base-image is built first.
+# Build the base images in the proper order.
 build-dockerfile "base"
 build-dockerfile "hdfs-base"
+build-dockerfile "hbase-base"
 
 # Build all images.
 for i in $(ls docker); do
