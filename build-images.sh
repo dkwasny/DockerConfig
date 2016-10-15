@@ -12,8 +12,9 @@ function build-dockerfile() {
 }
 
 # Build the base images in the proper order.
-build-dockerfile "base"
-build-dockerfile "hadoop-base"
+build-dockerfile "base";
+build-dockerfile "hadoop-base";
+build-dockerfile "hive-base";
 
 # Build all images.
 for i in $(ls docker); do
