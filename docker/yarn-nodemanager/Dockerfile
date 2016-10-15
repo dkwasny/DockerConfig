@@ -1,4 +1,4 @@
-FROM dkwasny/yarn-base
+FROM dkwasny/hadoop-base
 MAINTAINER David Kwasny <dkwasny67@gmail.com>
 
 RUN mkdir -p /usr/lib/hadoop-yarn/logs/

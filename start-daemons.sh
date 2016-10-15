@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 function run() {
 	IMAGE="$1";
 	NAME="$2";

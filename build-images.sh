@@ -13,9 +13,7 @@ function build-dockerfile() {
 
 # Build the base images in the proper order.
 build-dockerfile "base"
-build-dockerfile "hdfs-base"
-build-dockerfile "hbase-base"
-build-dockerfile "yarn-base"
+build-dockerfile "hadoop-base"
 
 # Build all images.
 for i in $(ls docker); do
