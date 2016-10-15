@@ -18,11 +18,16 @@ run hdfs-namenode hdfs-namenode;
 run hdfs-secondary-namenode hdfs-secondary-namenode;
 run hdfs-datanode hdfs-datanode-1;
 run hdfs-datanode hdfs-datanode-2;
+
 run zookeeper zookeeper;
+
 run hbase-master hbase-master;
 run hbase-regionserver hbase-regionserver-1;
 run hbase-regionserver hbase-regionserver-2;
+
 run yarn-resourcemanager yarn-resourcemanager;
 run yarn-nodemanager yarn-nodemanager-1;
 run yarn-nodemanager yarn-nodemanager-2;
 run mapreduce-historyserver mapreduce-historyserver;
+
+run mariadb mariadb;
