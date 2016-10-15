@@ -6,7 +6,8 @@ RUN yum -y install \
 	git \
 	sudo \
 	pig \
-	sqoop
+	sqoop \
+	flume
 
 RUN mkdir /workspace
 
