@@ -34,3 +34,5 @@ run mapreduce-historyserver mapreduce-historyserver;
 run hive-hcatalog hive-hcatalog;
 run hive-webhcat hive-webhcat;
 run hive-server hive-server;
+
+run oozie oozie;

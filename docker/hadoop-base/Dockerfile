@@ -10,7 +10,8 @@ RUN yum -y install \
 	hbase \
 	hive \
 	hive-hcatalog \
-	hive-webhcat
+	hive-webhcat \
+	oozie-client
 
 COPY files/core-site.xml /etc/hadoop/conf/
 COPY files/log4j.properties /etc/hadoop/conf/

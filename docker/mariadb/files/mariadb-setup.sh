@@ -23,10 +23,12 @@ function secure-sql() {
 	run-sql "DROP DATABASE test";
 }
 
-function add-hive() {
-	run-sql "CREATE DATABASE hive_metastore";
-	run-sql "CREATE USER 'hive'@'%' IDENTIFIED BY 'password'";
-	run-sql "GRANT ALL ON hive_metastore.* TO 'hive'@'%'";
+function add-schema() {
+	SCHEMA="$1";
+	USER="$2";
+	run-sql "CREATE DATABASE $SCHEMA";
+	run-sql "CREATE USER '$USER'@'%' IDENTIFIED BY 'password'";
+	run-sql "GRANT ALL ON $SCHEMA.* TO '$USER'@'%'";
 }
 
 # Start MariaDB
@@ -37,7 +39,8 @@ while [ ! -f /var/run/mariadb/mariadb.pid ]; do
 done;
 
 secure-sql
-add-hive
+add-schema hive_metastore hive
+add-schema oozie oozie
 
 # Shutdown MariaDB
 mysqladmin -u root -ppassword shutdown
