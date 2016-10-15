@@ -7,7 +7,10 @@ RUN yum -y install \
 	hadoop-hdfs \
 	hadoop-yarn \
 	hadoop-mapreduce \
-	hbase
+	hbase \
+	hive \
+	hive-hcatalog \
+	hive-webhcat
 
 COPY files/core-site.xml /etc/hadoop/conf/
 COPY files/log4j.properties /etc/hadoop/conf/
@@ -21,3 +24,5 @@ ENV YARN_HEAPSIZE=256
 
 COPY files/hbase-site.xml /etc/hbase/conf/
 ENV HBASE_HEAPSIZE=256
+
+COPY files/hive-site.xml /etc/hive/conf/

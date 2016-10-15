@@ -13,6 +13,8 @@ function run() {
 }
 
 docker run -d --name "dnsmasq" -h "dnsmasq.docker" --net docker --ip 172.18.1.1 dkwasny/dnsmasq;
+run mariadb mariadb;
+
 run hdfs-namenode hdfs-namenode;
 run hdfs-secondary-namenode hdfs-secondary-namenode;
 run hdfs-datanode hdfs-datanode-1;
@@ -29,4 +31,6 @@ run yarn-nodemanager yarn-nodemanager-1;
 run yarn-nodemanager yarn-nodemanager-2;
 run mapreduce-historyserver mapreduce-historyserver;
 
-run mariadb mariadb;
+run hive-hcatalog hive-hcatalog;
+run hive-webhcat hive-webhcat;
+run hive-server hive-server;
