@@ -15,6 +15,4 @@ COPY files/oozie-site.xml /etc/oozie/conf/
 
 RUN /usr/lib/oozie/tomcat-deployment.sh
 
-ENV CATALINA_OPTS=-Xmx256m
-
 CMD ["/usr/lib/oozie/bin/oozied.sh", "run"]

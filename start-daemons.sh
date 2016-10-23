@@ -16,8 +16,11 @@ function run() {
 		--name "$NAME" \
 		-h "$NAME.docker" \
 		--net docker \
+		--env-file "$SCRIPT_DIR/env.list" \
 		dkwasny/"$IMAGE" > /dev/null;
 }
+
+SCRIPT_DIR="$(dirname $0)";
 
 while getopts hd:r:n:a: ARG; do
 	case "$ARG" in
