@@ -1,0 +1,130 @@
+version: '2'
+services:
+    dnsmasq:
+        image: dkwasny/dnsmasq
+        container_name: dnsmasq
+        hostname: dnsmasq.docker
+        env_file: ./env.list
+        networks:
+            default:
+                ipv4_address: 172.18.1.1
+
+    mariadb:
+        image: dkwasny/mariadb
+        container_name: mariadb
+        hostname: mariadb.docker
+        env_file: ./env.list
+
+    hdfs-namenode:
+        image: dkwasny/hdfs-namenode
+        container_name: hdfs-namenode
+        hostname: hdfs-namenode.docker
+        env_file: ./env.list
+    hdfs-secondary-namenode:
+        image: dkwasny/hdfs-secondary-namenode
+        container_name: hdfs-secondary-namenode
+        hostname: hdfs-secondary-namenode.docker
+        env_file: ./env.list
+        depends_on:
+            - hdfs-namenode
+    hdfs-datanode-1:
+        image: dkwasny/hdfs-datanode
+        container_name: hdfs-datanode-1
+        hostname: hdfs-datanode-1.docker
+        env_file: ./env.list
+        depends_on:
+            - hdfs-namenode
+    hdfs-datanode-2:
+        image: dkwasny/hdfs-datanode
+        container_name: hdfs-datanode-2
+        hostname: hdfs-datanode-2.docker
+        env_file: ./env.list
+        depends_on:
+            - hdfs-namenode
+
+    yarn-resourcemanager:
+        image: dkwasny/yarn-resourcemanager
+        container_name: yarn-resourcemanager
+        hostname: yarn-resourcemanager.docker
+        env_file: ./env.list
+    yarn-nodemanager-1:
+        image: dkwasny/yarn-nodemanager
+        container_name: yarn-nodemanager-1
+        hostname: yarn-nodemanager-1.docker
+        env_file: ./env.list
+        depends_on:
+            - yarn-resourcemanager
+    yarn-nodemanager-2:
+        image: dkwasny/yarn-nodemanager
+        container_name: yarn-nodemanager-2
+        hostname: yarn-nodemanager-2.docker
+        env_file: ./env.list
+        depends_on:
+            - yarn-resourcemanager
+
+    mapreduce-historyserver:
+        image: dkwasny/mapreduce-historyserver
+        container_name: mapreduce-historyserver
+        hostname: mapreduce-historyserver.docker
+        env_file: ./env.list
+
+    zookeeper:
+        image: dkwasny/zookeeper
+        container_name: zookeeper
+        hostname: zookeeper.docker
+        env_file: ./env.list
+
+    hbase-master:
+        image: dkwasny/hbase-master
+        container_name: hbase-master
+        hostname: hbase-master.docker
+        env_file: ./env.list
+        depends_on:
+            - hdfs-namenode
+            - zookeeper
+    hbase-regionserver-1:
+        image: dkwasny/hbase-regionserver
+        container_name: hbase-regionserver-1
+        hostname: hbase-regionserver-1.docker
+        env_file: ./env.list
+        depends_on:
+            - hbase-master
+    hbase-regionserver-2:
+        image: dkwasny/hbase-regionserver
+        container_name: hbase-regionserver-2
+        hostname: hbase-regionserver-2.docker
+        env_file: ./env.list
+        depends_on:
+            - hbase-master
+
+    hive-hcatalog:
+        image: dkwasny/hive-hcatalog
+        container_name: hive-hcatalog
+        hostname: hive-hcatalog.docker
+        env_file: ./env.list
+    hive-webhcat:
+        image: dkwasny/hive-webhcat
+        container_name: hive-webhcat
+        hostname: hive-webhcat.docker
+        env_file: ./env.list
+        depends_on:
+            - hive-hcatalog
+    hive-server:
+        image: dkwasny/hive-server
+        container_name: hive-server
+        hostname: hive-server.docker
+        env_file: ./env.list
+        depends_on:
+            - hive-hcatalog
+            - hdfs-namenode
+
+    oozie:
+        image: dkwasny/oozie
+        container_name: oozie
+        hostname: oozie.docker
+        env_file: ./env.list
+
+networks:
+    default:
+        external:
+            name: docker

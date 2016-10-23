@@ -29,11 +29,11 @@
 	</property>
 	<property>
 		<name>dfs.namenode.rpc-address</name>
-		<value>hdfs-namenode:8020</value>
+		<value>hdfs-namenode.docker:8020</value>
 	</property>
 	<property>
 		<name>dfs.namenode.secondary.http-address</name>
-		<value>hdfs-secondary-namenode:50090</value>
+		<value>hdfs-secondary-namenode.docker:50090</value>
 	</property>
 	<property>
 		<name>dfs.namenode.handler.count</name>
